@@ -6,7 +6,7 @@
 
 ## Data Set
 
-![Pie Graph](output.png)
+![Pie Graph](output2.png)
 
 ## To Access the Data Set
 
@@ -14,7 +14,8 @@ https://www.kaggle.com/datasets/burakergven/car-prediction-cnn-model-dataset/dat
 
 ## Accuracy
 
-![Training and Test Accuracy Graph](output1.png)
+![Training and Test Accuracy And Loss Graph](output.png)
+![](output1.png)
 
 
 The training accuracy of the model is 0.89 and the test accuracy is 0.76. To increase the accuracy, several techniques were used, including BachNormalization, Dropout, and LearningRateScheduler. Details about these techniques can be found in the “note.txt” file.
