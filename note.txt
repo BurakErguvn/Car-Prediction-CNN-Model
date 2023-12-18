@@ -1,26 +1,24 @@
-BachNormalizetion --> tek başına işe yaramadı.
+BachNormalisation --> did not work by itself.
 
-Flattening Arkası ANN Katmanı --> 1.0: İşe yaramış olabilir Dropout ile birlikte eklendi. !Dropoutu devre dışı bırak tekrar dene.
-                                  1.1: Dropout kaldırıldı aşırı öğrenme engellenmedi. accuracy: 0.9777 ,val_accuracy: 0.6803 eklenmemiş halinden daha iyi ama aşırı öğrenme var.
+ANN Layer behind Flattening --> 1.0: It may have worked added together with Dropout. Disable dropout and try again.
+                                  1.1: Dropout removed, overlearning not prevented. accuracy: 0.9777 ,val_accuracy: 0.6803 better than without, but there is overlearning.
 
-Dropout --> rate= 0.30: aşırı öğrenme önlendi ama çok yavaş eğitilityor. Epoch=25 val_accuracy: 0.6220 dengesiz. !Epoch sayısı arttırılmalı.
-            rate= 0.25: aşırı öğrenme kısmen önlendi Epoch sayısı yeterli. Epoch=25 accuracy: 0.9178 val_accuracy: 0.7406 dengeli ama tahmin doğruluğu yetersiz. *Version 0.5
-            rate= 0.20: aşırı öğrenme önlendi Epoch=50 accuracy: 0.7745 val_accuracy: 0.7385 dengeli tahmin doğruluğu yetersiz.
-            rate= 0.30: aşırı öğrenme önlendi Epoch=100 accuracy: 0.7194  val_accuracy: 0.7218 dengeli tahmin doğruluğu yetersiz.
+Dropout --> rate= 0.30: overlearning is prevented but it trains very slowly. Epoch=25 val_accuracy: 0.6220 unbalanced. The number of epochs should be increased.
+            rate= 0.25: overlearning partially prevented Epoch count is sufficient. Epoch=25 accuracy: 0.9178 val_accuracy: 0.7406 balanced but insufficient prediction accuracy. *Version 0.5
+            rate= 0.20: overlearning prevented Epoch=50 accuracy: 0.7745 val_accuracy: 0.7385 balanced prediction accuracy insufficient.
+            rate= 0.30: overlearning prevented Epoch=100 accuracy: 0.7194 val_accuracy: 0.7218 balanced prediction accuracy insufficient.
 
-Dördüncü Katman --> Epoch=25 rate=0.25 dördüncü katman eklendi aşırı öğrenme önlendi test skoru sabit. accuracy: 0.8331 val_accuracy: 0.7508 tahmin doğruluğu yetersiz. *Version 0.6
+Fourth Layer --> Epoch=25 rate=0.25 fourth layer added overlearning prevented test score stable. accuracy: 0.8331 val_accuracy: 0.7508 prediction accuracy insufficient. *Version 0.6
 
-Learning Rate Scheduler --> Epoch=25 Dropout_rate=0.25 scheduler: Epoch<10 azaltma -0.1 accuracy: 0.8669 val_accuracy: 0.7556 tahmin doğruluğu yetersiz.
-                            Azaltma değeri düşürüldü daha erken Learning rate e mudahele edildi sonuç olumsuz.
-                            Dropout kaldırıldı over fitting engellenemedi.
-                            !Epoch arttır. 
+Learning Rate Scheduler --> Epoch=25 Dropout_rate=0.25 scheduler: Epoch<10 reduction -0.1 accuracy: 0.8669 val_accuracy: 0.7556 prediction accuracy insufficient.
+                            Reduced the dropout value, interfered with the learning rate earlier and the result was negative.
+                            Dropout removed over fitting could not be prevented.
+                            Increase epoch. 
 
-TensorflowGPU --> Performans arttı eğitim süresi kısaldı test doğruluğu arttı. accuracy: 0.8722 val_accuracy: 0.7642 *Version 0.8
+TensorflowGPU --> Performance increased, training time decreased, test accuracy increased. accuracy: 0.8722 val_accuracy: 0.7642 *Version 0.8
 
-Grayscale--> Veri seti 'RGB'den 'Grayscale'e dönüştürüldü. accuracy: 0.8999 val_accuracy: 0.7693 *Version 1.1
+Grayscale --> Converted data set from 'RGB' to 'Grayscale'. accuracy: 0.8999 val_accuracy: 0.7693 *Version 1.1
  
---> Sinir hücresi sayısı toplamda yarıya indirildi. Aşırı öğrenme önlendi doğruluk düşük.
---> Learning Rate Scheduler kapatıldı. Sinir hücresi sayısı toplamda yarıya indirildi. Epoch=50 30 dan sonra sabitlendi. Doğruluk düşük.
---> 
-
-## YAPILACAKLAR ##
+--> The number of neural cells has been halved in total. Overlearning prevented, accuracy is low.
+--> Learning Rate Scheduler switched off. Number of neural cells halved in total. Epoch=50 fixed after 30. Accuracy low.
+ 
