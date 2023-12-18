@@ -6,11 +6,11 @@
 
 ## Data Set
 
-![Pie Graph]()
+![Pie Graph](output.png)
 
 ## Accuracy
 
-![Training and Test Accuracy Graph]()
+![Training and Test Accuracy Graph](output1.png)
 
 
 The training accuracy of the model is 0.89 and the test accuracy is 0.76. To increase the accuracy, several techniques were used, including BachNormalization, Dropout, and LearningRateScheduler. Details about these techniques can be found in the “note.txt” file.
