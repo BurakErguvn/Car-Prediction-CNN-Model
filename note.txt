@@ -1,0 +1,26 @@
+BachNormalizetion --> tek başına işe yaramadı.
+
+Flattening Arkası ANN Katmanı --> 1.0: İşe yaramış olabilir Dropout ile birlikte eklendi. !Dropoutu devre dışı bırak tekrar dene.
+                                  1.1: Dropout kaldırıldı aşırı öğrenme engellenmedi. accuracy: 0.9777 ,val_accuracy: 0.6803 eklenmemiş halinden daha iyi ama aşırı öğrenme var.
+
+Dropout --> rate= 0.30: aşırı öğrenme önlendi ama çok yavaş eğitilityor. Epoch=25 val_accuracy: 0.6220 dengesiz. !Epoch sayısı arttırılmalı.
+            rate= 0.25: aşırı öğrenme kısmen önlendi Epoch sayısı yeterli. Epoch=25 accuracy: 0.9178 val_accuracy: 0.7406 dengeli ama tahmin doğruluğu yetersiz. *Version 0.5
+            rate= 0.20: aşırı öğrenme önlendi Epoch=50 accuracy: 0.7745 val_accuracy: 0.7385 dengeli tahmin doğruluğu yetersiz.
+            rate= 0.30: aşırı öğrenme önlendi Epoch=100 accuracy: 0.7194  val_accuracy: 0.7218 dengeli tahmin doğruluğu yetersiz.
+
+Dördüncü Katman --> Epoch=25 rate=0.25 dördüncü katman eklendi aşırı öğrenme önlendi test skoru sabit. accuracy: 0.8331 val_accuracy: 0.7508 tahmin doğruluğu yetersiz. *Version 0.6
+
+Learning Rate Scheduler --> Epoch=25 Dropout_rate=0.25 scheduler: Epoch<10 azaltma -0.1 accuracy: 0.8669 val_accuracy: 0.7556 tahmin doğruluğu yetersiz.
+                            Azaltma değeri düşürüldü daha erken Learning rate e mudahele edildi sonuç olumsuz.
+                            Dropout kaldırıldı over fitting engellenemedi.
+                            !Epoch arttır. 
+
+TensorflowGPU --> Performans arttı eğitim süresi kısaldı test doğruluğu arttı. accuracy: 0.8722 val_accuracy: 0.7642 *Version 0.8
+
+Grayscale--> Veri seti 'RGB'den 'Grayscale'e dönüştürüldü. accuracy: 0.8999 val_accuracy: 0.7693 *Version 1.1
+ 
+--> Sinir hücresi sayısı toplamda yarıya indirildi. Aşırı öğrenme önlendi doğruluk düşük.
+--> Learning Rate Scheduler kapatıldı. Sinir hücresi sayısı toplamda yarıya indirildi. Epoch=50 30 dan sonra sabitlendi. Doğruluk düşük.
+--> 
+
+## YAPILACAKLAR ##
