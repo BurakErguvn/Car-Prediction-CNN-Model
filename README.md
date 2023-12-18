@@ -8,6 +8,10 @@
 
 ![Pie Graph](output.png)
 
+## To Access the Data Set
+
+https://www.kaggle.com/datasets/burakergven/car-prediction-cnn-model-dataset/data
+
 ## Accuracy
 
 ![Training and Test Accuracy Graph](output1.png)
